@@ -15,6 +15,7 @@ function App() {
   const progressBarRef = useRef(null); // Reference to the progress bar
   const [bgColor, setBgColor] = useState('transparent'); 
   const [textColor, setTextColor] = useState('#FFFFFF');
+  const [sidebarShown, setSideBarShown] = useState(false);
 
   useEffect(() => {
 
@@ -66,15 +67,9 @@ function App() {
         }
       })
     })
-    const wholeNav = document.querySelector('nav');
-    wholeNav.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-    })
 
     // Pinned text animation
     const pinnedText = document.querySelector('.pinned-text');
-
     gsap.to(pinnedText, {
       scrollTrigger: {
         trigger: pinnedText,
@@ -175,9 +170,22 @@ function App() {
 
   // change hero vid when clicked
   const [isYouTube, setIsYouTube] = useState(false);
-  const handleVideoChange = () => {
-    setIsYouTube(!isYouTube);
-  };
+  const handleVideoChange = () => setIsYouTube(!isYouTube);
+
+  // useEffect to update sidebar display when sidebarShown changes
+  useEffect(() => {
+    const sidebar = document.querySelector('.links.sidebar');
+    if (sidebar) {
+      if (sidebarShown) {
+        sidebar.classList.add('open'); // Apply transition class
+      } else {
+        sidebar.classList.remove('open'); // Remove transition class
+      }
+    }
+  }, [sidebarShown]);
+
+  // Handle sidebar toggle
+  const toggleSidebar = () => setSideBarShown((prev) => !prev); // Toggle sidebar state
 
   return (
     <div className="appContainer" >
@@ -187,7 +195,7 @@ function App() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
-        onClick={handleVideoChange}>
+        >
 
         {/* navbar */}
         <nav 
@@ -197,17 +205,26 @@ function App() {
           <a className='logo logo-nav' style={{ color: textColor }} href='#hero'>Soul Stretch
           </a>
           <div className='links'>
-            <a href='#about' style={{ color: textColor }}> About </a>
-            <a href='#classes' style={{ color: textColor }}> Classes </a>
-            <a href='#testimonials' style={{ color: textColor }}> Testimonials </a>
-            <a href='#articles' style={{ color: textColor }}> Articles </a>
-            <a href='#contact' style={{ color: textColor }}> Contact </a>
+            <a href='#about' style={{ color: textColor }} className='hideOnMobile'> About </a>
+            <a href='#classes' style={{ color: textColor }} className='hideOnMobile'> Classes </a>
+            <a href='#testimonials' style={{ color: textColor }} className='hideOnMobile'> Testimonials </a>
+            <a href='#articles' style={{ color: textColor }} className='hideOnMobile'> Articles </a>
+            <a href='#contact' style={{ color: textColor }} className='hideOnMobile'> Contact </a>
+            <button className='bx bx-menu' onClick={toggleSidebar}></button>
+          </div>
+          <div className='links sidebar' >
+              <button className='bx bx-x' onClick={toggleSidebar}></button>
+              <a href='#about'> About </a>
+              <a href='#classes'> Classes </a>
+              <a href='#testimonials'> Testimonials </a>
+              <a href='#articles'> Articles </a>
+              <a href='#contact'> Contact </a>
           </div>
         </nav>
 
-        {/* view cursor */}
-        <div
-          className="customCursor"
+        <div onClick={handleVideoChange}>
+          {/* view cursor */}
+          <div className="customCursor" 
           style={{
             transform: `translate(${cursorPosition.x - 80}px, ${cursorPosition.y - 80}px)`,
             opacity: isHovered ? 1 : 0
@@ -225,7 +242,8 @@ function App() {
             Your browser does not support the video tag.
           </video>
         )}
-        
+        </div>
+
       </header>
 
       {/* about us section */}
@@ -561,8 +579,8 @@ function App() {
           {/* social media and contact information */}
           <div className='social'>
               <h3>Social</h3>
-              <a href='https://www.linkedin.com/in/thwin-han-shin-44b157334/' target="_blank"> LinkedIn </a> 
-              <a href='https://github.com/HanShin0512' target="_blank" > GitHub </a>
+              <a href='https://www.linkedin.com/in/thwin-han-shin-44b157334/' target="_blank" rel='noreferrer'> LinkedIn </a> 
+              <a href='https://github.com/HanShin0512' target="_blank" rel='noreferrer'> GitHub </a>
           </div>
           <div className='contactInfo'>
               <h3>Contact Information</h3>

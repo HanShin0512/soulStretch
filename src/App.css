@@ -12,19 +12,15 @@
 .youtube-container {
 	overflow: hidden;
 	width: 100%;
-	/* Keep it the right aspect-ratio */
 	aspect-ratio: 16/9;
-	/* No clicking/hover effects */
-	pointer-events: none;
 	
 	iframe {
-		/* Extend it beyond the viewport... */
 		width: 300%;
 		height: 100%;
-		/* ...and bring it back again */
 		margin-left: -100%;
 	}
 }
+
 /* navbar */
 nav{
   position: absolute;
@@ -35,7 +31,7 @@ nav{
   justify-content: space-around;
   gap: 300px;
   width: 100%;
-  z-index: 1000;
+  z-index: 3;
   transition: opacity 0.6s ease, background-color 0.6s ease;
 }
 .logo-nav{
@@ -72,15 +68,59 @@ nav .links a::before{
   left: 0;
   position: absolute;
   transition: width 0.3s ease;
-  transform-origin: right;
 }
 nav .links a:hover::before{
   width: 100%;
-  transform-origin: left;
 }
 nav:hover{
   cursor:default;
 }
+.links.sidebar{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  text-transform: uppercase;
+  padding: 2rem;
+  align-items: center;
+  z-index: 4;
+  right: 0;
+  top: 0;
+  background-color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(100%);
+  opacity: 0; /* Initially hidden */
+}
+.links.sidebar.open {
+  transform: translateX(0%); /* Slide in from the right */
+  opacity: 1;
+}
+.links.sidebar a{
+  color: black;
+}
+.bx{
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  display: none;
+}
+.bx:hover{
+  cursor: pointer;
+}
+.bx-x{
+  color: black;
+}
+/* navbar responsive */
+@media (max-width: 480px){
+  .bx{
+    display: block;
+  }
+  .hideOnMobile{
+    display: none;
+  }
+}
+
 /* custom cursor */
 .hero-section{
   position: relative;
@@ -264,19 +304,6 @@ nav:hover{
   text-transform: uppercase;
   line-height: 0;
 }
-/* .dragCursor{
-  position: fixed;
-  background-color: #8ABD91;
-  width: 50px;
-  padding: 1.5rem;
-  border-radius: 4rem;
-  z-index: 2;
-  text-align: center;
-  color: white;
-  font-family: "Playfair Display";
-  border: 2px solid white;
-  pointer-events: none;
-} */
 
 /* articles */
 .article{
