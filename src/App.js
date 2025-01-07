@@ -70,16 +70,22 @@ function App() {
 
     // Pinned text animation
     const pinnedText = document.querySelector('.pinned-text');
-    gsap.to(pinnedText, {
-      scrollTrigger: {
-        trigger: pinnedText,
-        start: "top top",
-        end: "bottom bottom",
-        pin: true,
-        scrub: 1,
-        scroller: scrollEl,
+    ScrollTrigger.matchMedia({
+      // For desktop
+      "(min-width: 1025px)": function () {
+        gsap.to(pinnedText, {
+          scrollTrigger: {
+            trigger: pinnedText,
+            start: "top top",
+            end: "bottom bottom",
+            pin: true,
+            scrub: 1,
+            scroller: scrollEl,
+          },
+        });
       },
-    });
+      
+    });    
 
     //color change
     const changeLotus = document.querySelector('.pinned-text img');
