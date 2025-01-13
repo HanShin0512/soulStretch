@@ -130,8 +130,15 @@ function App() {
 
     //drag reviews
     const reviewsContainer = containerRef.current;
-    const reviews = reviewsContainer.querySelector('.reviews');
+    const reviews = reviewsContainer.querySelector(".reviews");
     const reviewsWidth = reviews.scrollWidth; // Total width of reviews
+    const progressBar = progressBarRef.current;
+
+    // Calculate initial progress bar width
+    const progressWidth = (reviewsContainer.offsetWidth / reviewsWidth) * 100;
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(progressWidth, 100)}%`;
+    }
 
     // Create Draggable instance
     Draggable.create(reviews, {
@@ -145,10 +152,9 @@ function App() {
         x: (value) => Math.round(value / 300) * 300, // Adjust snapping points
       },
       onDrag: function () {
-        const progress = Math.abs(this.x) / (reviewsWidth - reviewsContainer.offsetWidth); // Get drag progress (0 to 1)
-        const progressBar = progressBarRef.current;
+        const progress = Math.abs(this.x) / (reviewsWidth - reviewsContainer.offsetWidth); // Drag progress (0 to 1)
         if (progressBar) {
-          progressBar.style.left  = `${Math.min(progress, 1) * 70}%`; // Update left based on drag progress
+          progressBar.style.left = `${Math.min(progress, 1) * (100 - progressWidth)}%`; // Update left based on drag progress
         }
       },
     });
@@ -394,14 +400,21 @@ function App() {
               <p> From the moment you walk in, the vibe is so welcoming. The playlists during class are amazing, and the instructors really know their stuff. I'm hooked on the candlelight yoga sessions—it’s pure bliss. </p>
               <h3> — Sophia D. </h3>
             </div>
-          </div>
 
-          {/* scrollbar for reviews */}
-          <div className='reviewsScrollbar'>
-            <div className='scrollbarProgress' ref={progressBarRef}></div>
+            <div className='review'>
+              <h1> Kind Instructors </h1>
+              <p> The instructors are so patient and knowledgeable, guiding us through every pose with care. The atmosphere is calm and welcoming, making it the perfect escape from a busy day. </p>
+              <h3> — Lily B. </h3>
+            </div>
+
           </div>
 
         </div>   
+
+        {/* scrollbar for reviews */}
+        <div className='reviewsScrollbar'>
+          <div className='scrollbarProgress' ref={progressBarRef}></div>
+        </div>
 
       </section>
 

@@ -308,8 +308,8 @@ nav:hover{
 }
 .review{
   line-height: 30px;
-  height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   flex: 1 0 25%;
 }
 .reviewsScrollbar{
@@ -326,7 +326,6 @@ nav:hover{
   left: 0;
   height: 100%;
   background-color: #81AF88; 
-  width: 30%; 
   transition: width 0.1s ease-out;
 }
 .titleContainer {
@@ -339,6 +338,14 @@ nav:hover{
   margin: 100px 80px;
   text-transform: uppercase;
   line-height: 0;
+}
+@media (max-width: 768px) {
+  .review {
+    flex: 1 0 100%; 
+  }
+  .reviewsScrollbar{
+    margin-top: 0px;
+  }
 }
 
 /* articles */
