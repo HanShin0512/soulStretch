@@ -83,8 +83,7 @@ function App() {
             scroller: scrollEl,
           },
         });
-      },
-      
+      }
     });    
 
     //color change
@@ -93,7 +92,7 @@ function App() {
     document.body.style.transition = "all 1s ease";
     gsap.to(document.body, {
       scrollTrigger: {
-        trigger: pinnedText,
+        trigger: ".descriptionII",
         start: "top-=300px top",
         end: "bottom+=300px bottom",
         scrub: 1,
@@ -244,7 +243,7 @@ function App() {
           <iframe src="https://www.youtube.com/embed/GSENAaAu8QQ?autoplay=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=GSENAaAu8QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         ) : (
-          <video id='hero' className='hero-vid' src="https://videos.pexels.com/video-files/4325585/4325585-sd_960_506_25fps.mp4" autoPlay loop disablePictureInPicture >
+          <video id='hero' className='hero-vid' src="https://videos.pexels.com/video-files/4327192/4327192-uhd_2732_1440_25fps.mp4" autoPlay loop disablePictureInPicture >
             Your browser does not support the video tag.
           </video>
         )}

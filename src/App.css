@@ -18,6 +18,7 @@
 		width: 300%;
 		height: 100%;
 		margin-left: -100%;
+    pointer-events: none;
 	}
 }
 
@@ -183,7 +184,7 @@ nav:hover{
   padding: 150px;
 }
 .zoom-img{
-  height: 19.5vh;
+  height: 15vw;
   transition: transform 0.5s ease;
 }
 .award{
@@ -192,7 +193,7 @@ nav:hover{
   justify-content: center;
   align-items: center;
   width: 25vw;
-  font-size: 2vw;
+  font-size: 1.3vw;
   text-align: center;
   text-transform: uppercase;
 }
@@ -252,30 +253,26 @@ nav:hover{
 }
 @media (max-width: 1024px){
   .descriptionII{
-    height: 70vh;
-  }
-}
-@media (max-width: 480px){
-  .descriptionII{
     flex-direction: column-reverse;
-    height: 100vh;
-    align-items: center;
     justify-content: space-evenly;
+    height: 170vh;
   }
   .pinned-text{
     width: 100%;
   }
   .scrolling-image video, .scrolling-image{
-    width: 90%;
+    width: 100%
   }
 }
 
 /* classes */
 .classesContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 2rem;
   margin-top: 100px;
   margin-bottom: 100px;
+  flex-wrap: wrap;
 }
 .class{
   width: 480px;
