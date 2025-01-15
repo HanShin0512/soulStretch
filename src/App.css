@@ -29,9 +29,9 @@ nav{
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 300px;
-  width: 100%;
+  justify-content: space-between;
+  width: 97%;
+  padding-left: 1.3vw;
   z-index: 3;
   transition: opacity 0.6s ease, background-color 0.6s ease;
 }
@@ -45,7 +45,7 @@ nav{
 }
 .links{
   display: flex;
-  gap: 5.21vw;
+  gap: 5vw;
   text-transform: uppercase;
 }
 nav a{
@@ -339,12 +339,21 @@ nav:hover{
   text-transform: uppercase;
   line-height: 0;
 }
+@media (max-width: 900px) {
+  .review {
+    flex: 1 0 30%; 
+  }
+
+}
 @media (max-width: 768px) {
   .review {
     flex: 1 0 100%; 
   }
   .reviewsScrollbar{
     margin-top: 0px;
+  }
+  .reviews{
+    padding-left: 40px;
   }
 }
 
@@ -353,7 +362,8 @@ nav:hover{
   width: 90%;
   display: flex;
   margin: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -390,6 +400,21 @@ nav:hover{
   transform: rotate(360deg);
   transition: transform 1s ease-in-out;
 }
+@media (max-width: 1024px) {
+  .article{
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .article .right{
+    order: 3;
+  }
+  .articleImgContainer{
+    order: 1;
+  }
+  .article .icon{
+    order: 2;
+  }
+}
 
 /* footer */
 .logo.footer{
@@ -409,6 +434,7 @@ footer .top{
   justify-content: space-between;
 }
 footer .top h1{
+  font-size: 2vw;
   width: 50%;
 }
 footer .bottom{
@@ -418,18 +444,21 @@ footer .bottom{
   justify-content: space-evenly;
   padding-top: 5rem;
 }
+footer .bottom h3{
+  font-size: 2vw;
+}
 .sendEmail{
-  width: 500px;
+  width: 25vw;
   background-color: #81AF88;
   padding: 1rem;
   border: none;
   border-bottom: 3px solid white;
   height: 20px;
-  font-size: 25px;
+  font-size: 1.5vw;
   color: white;
 }
 .sendEmail::placeholder{
-  font-size: 25px;
+  font-size: 1.5vw;
   color: white;
 }
 .sendEmail:focus{
@@ -443,7 +472,7 @@ form button:hover{
   cursor: pointer;
 }
 button img{
-  width: 32px;
+  width: 24px;
 }
 .social a {
   display: block;
@@ -451,6 +480,10 @@ button img{
   line-height: normal;
   color: white;
   margin-bottom: 16px;
+  font-size: 1vw;
+}
+.contactInfo p{
+  font-size: 1vw;
 }
 .social a:hover{
   text-decoration: underline;

@@ -373,7 +373,7 @@ function App() {
 
             <div className='review'>
               <h1> A Game-Changer for My Mind and Body </h1>
-              <p> I joined Soul Stretch a month ago, and it's been life-changing. The instructors are so calming, and the sessions are beginner-friendly but still challenging. My partner and I even did a couples' yoga class—it was such a great bonding experience.</p>
+              <p> I joined Soul Stretch a month ago, and it's been life-changing. The instructors are so calming, and the sessions are beginner-friendly but still challenging. </p>
               <h3> — Amelia R. </h3>
             </div>
 
