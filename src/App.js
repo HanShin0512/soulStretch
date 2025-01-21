@@ -209,7 +209,7 @@ function App() {
   const toggleSidebar = () => setSideBarShown((prev) => !prev); // Toggle sidebar state
 
   return (
-    <div className="appContainer" >
+    <div className="appContainer" data-scroll-container>
       
       {/* hero section */}
       <header className='hero-section'
