@@ -176,9 +176,15 @@ function App() {
   // custom cursor
   const [cursorPosition, setCursorPosition] = useState({ x: '0%', y: '0%' });
   const [isHovered, setIsHovered] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+  useEffect(() => {
+    // Check if it's a desktop device
+    setIsDesktop(!('ontouchstart' in window));
+  }, []);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
   const handleMouseMove = (e) => {
+    isDesktop &&
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
 
@@ -238,13 +244,16 @@ function App() {
 
         <div onClick={handleVideoChange} id='hero'>
           {/* view cursor */}
-          <div className="customCursor" 
-          style={{
-            transform: `translate(${cursorPosition.x - 80}px, ${cursorPosition.y - 80}px)`,
-            opacity: isHovered ? 1 : 0
-          }}>
-          <p>View Video</p>
-          </div>
+          {isDesktop && isHovered && (
+            <div className="customCursor" 
+            style={{
+              transform: `translate(${cursorPosition.x - 80}px, ${cursorPosition.y - 80}px)`,
+              opacity: 1
+            }}>
+              <p>View Video</p>
+            </div>
+          )}
+          
 
           {/* video */}
           {isYouTube ? (
