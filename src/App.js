@@ -24,7 +24,12 @@ function App() {
     const locoScroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,
-      smoothMobile: true,
+      mobile: {
+        smooth: true
+      },
+      tablet: {
+        smooth: true
+      },
       multiplier: 0.6,
       revealClass: 'is-reveal',
     });
@@ -40,9 +45,7 @@ function App() {
       pinType: scrollEl.style.transform ? "transform" : "fixed",
     });
 
-    locoScroll.on("scroll", () => {
-      requestAnimationFrame(() => ScrollTrigger.update());
-    });
+    locoScroll.on("scroll", ScrollTrigger.update);
 
     //position fixed for nav
     const navbar = document.querySelector('nav');
