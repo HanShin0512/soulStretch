@@ -44,7 +44,7 @@ function App() {
     //position fixed for nav
     const navbar = document.querySelector('nav');
     locoScroll.on('scroll', ({ scroll }) => {
-      navbar.style.transform = `translateY(${scroll.y}px)`;
+      navbar.style.top = `${scroll.y}px`;
       //change nav color 
       const heroVid = document.querySelector('.hero-vid');
       const heroHeight = heroVid.offsetHeight;
