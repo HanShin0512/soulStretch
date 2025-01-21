@@ -26,6 +26,9 @@
   .hero-vid{
     height: 100%;
   }
+  .hero-section{
+    cursor: none;
+  }
 }
 
 /* navbar */
@@ -476,6 +479,7 @@ footer{
   color: white;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  overflow-y: hidden;
 }
 footer .top{
   width: 90%;

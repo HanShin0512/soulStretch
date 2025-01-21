@@ -301,7 +301,7 @@ function App() {
           </div>
 
           <div className="scrolling-image">
-          <video src='https://videos.pexels.com/video-files/4327275/4327275-uhd_1440_2732_25fps.mp4' className='vertical-yoga' autoPlay loop disablePictureInPicture></video>
+          <video src='https://videos.pexels.com/video-files/4327275/4327275-uhd_1440_2732_25fps.mp4' className='vertical-yoga' autoPlay playsinline loop disablePictureInPicture></video>
           </div>
         </div>
 
