@@ -25,8 +25,6 @@
 @media (max-width: 480px){
   .hero-vid{
     height: 100%;
-  }
-  .hero-section{
     pointer-events: none;
   }
 }
@@ -276,7 +274,6 @@ nav:hover{
   }
   .scrolling-image video, .scrolling-image{
     width: 100%;
-    pointer-events: none;
   }
 }
 @media (max-width: 480px){
