@@ -6,11 +6,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .logo{
   font-style: italic;
   font-weight: bold;
   font-family: "Playfair Display";
   text-transform: capitalize;
+}
+@media(max-width: 480px){
+  body{
+    cursor: none;
+  }
 }
