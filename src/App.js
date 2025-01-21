@@ -24,6 +24,7 @@ function App() {
     const locoScroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,
+      smoothMobile: true,
       multiplier: 0.6,
       revealClass: 'is-reveal',
     });
