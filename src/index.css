@@ -15,9 +15,3 @@ body {
   font-family: "Playfair Display";
   text-transform: capitalize;
 }
-@media(max-width: 480px){
-  * {
-    border: 1px solid red;
-  }
-
-}
