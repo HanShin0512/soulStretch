@@ -46,7 +46,10 @@ function App() {
     locoScroll.on('scroll', ({ scroll }) => {
       navbar.style.transform = `translateY(${scroll.y}px)`;
       //change nav color 
-      if (scroll.y > window.innerHeight) { // If scrolled more than 100vh
+      const heroVid = document.querySelector('.hero-vid');
+      const heroHeight = heroVid.offsetHeight;
+      //if scrolled more than hero vid
+      if (scroll.y > heroHeight) {
         setBgColor('#FFFFFF');  // Set background to white
         setTextColor('#000000'); // Set text to black
       } else {
@@ -221,7 +224,7 @@ function App() {
             <a href='#testimonials' style={{ color: textColor }} className='hideOnMobile'> Testimonials </a>
             <a href='#articles' style={{ color: textColor }} className='hideOnMobile'> Articles </a>
             <a href='#contact' style={{ color: textColor }} className='hideOnMobile'> Contact </a>
-            <button className='bx bx-menu' onClick={toggleSidebar}></button>
+            <button className='bx bx-menu' style={{ color: textColor }} onClick={toggleSidebar}></button>
           </div>
           <div className='links sidebar' >
               <button className='bx bx-x' onClick={toggleSidebar}></button>
@@ -233,7 +236,7 @@ function App() {
           </div>
         </nav>
 
-        <div onClick={handleVideoChange}>
+        <div onClick={handleVideoChange} id='hero'>
           {/* view cursor */}
           <div className="customCursor" 
           style={{
@@ -241,18 +244,19 @@ function App() {
             opacity: isHovered ? 1 : 0
           }}>
           <p>View Video</p>
-        </div>
-
-        {/* video */}
-        {isYouTube ? (
-          <div class="youtube-container">
-          <iframe src="https://www.youtube.com/embed/GSENAaAu8QQ?autoplay=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=GSENAaAu8QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-        ) : (
-          <video id='hero' className='hero-vid' src="https://videos.pexels.com/video-files/4327192/4327192-uhd_2732_1440_25fps.mp4" autoPlay loop disablePictureInPicture >
-            Your browser does not support the video tag.
-          </video>
-        )}
+
+          {/* video */}
+          {isYouTube ? (
+            <div class="youtube-container">
+            <iframe src="https://www.youtube.com/embed/GSENAaAu8QQ?autoplay=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=GSENAaAu8QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          ) : (
+            <video className='hero-vid' src="https://videos.pexels.com/video-files/7580229/7580229-uhd_2560_1440_25fps.mp4" autoPlay loop disablePictureInPicture >
+              Your browser does not support the video tag.
+            </video>
+          )}
+
         </div>
 
       </header>

@@ -8,6 +8,7 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+  background-position: center;
 }
 .youtube-container {
 	overflow: hidden;
@@ -21,6 +22,11 @@
     pointer-events: none;
 	}
 }
+@media (max-width: 480px){
+  .hero-vid{
+    height: 100%;
+  }
+}
 
 /* navbar */
 nav{
@@ -32,6 +38,7 @@ nav{
   justify-content: space-between;
   width: 97%;
   padding-left: 1.3vw;
+  padding-right: 1.43vw;
   z-index: 3;
   transition: opacity 0.6s ease, background-color 0.6s ease;
 }
@@ -78,10 +85,12 @@ nav:hover{
   cursor:default;
 }
 .links.sidebar{
+  height: 90vh;
+  width: 100px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 2rem;
   text-transform: uppercase;
   padding: 2rem;
   align-items: center;
@@ -98,7 +107,9 @@ nav:hover{
   opacity: 1;
 }
 .links.sidebar a{
+  font-size: 12px;
   color: black;
+  border-bottom: 1px solid #81AF88;
 }
 .bx{
   font-size: 2vw;
@@ -184,7 +195,7 @@ nav:hover{
   padding: 150px;
 }
 .zoom-img{
-  height: 15vw;
+  height: 16vw;
   transition: transform 0.5s ease;
 }
 .award{
@@ -193,7 +204,7 @@ nav:hover{
   justify-content: center;
   align-items: center;
   width: 25vw;
-  font-size: 1.3vw;
+  font-size: 1.75vw;
   text-align: center;
   text-transform: uppercase;
 }
@@ -264,6 +275,19 @@ nav:hover{
     width: 100%
   }
 }
+@media (max-width: 480px){
+  .descriptionII{
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    height: 130vh;
+  }
+  .pinned-text{
+    width: 100%;
+  }
+  .scrolling-image video, .scrolling-image{
+    width: 100%
+  }
+}
 
 /* classes */
 .classesContainer {
@@ -293,6 +317,22 @@ nav:hover{
 .class img:hover{
   cursor: pointer;
   transform: scale(1.05);
+}
+@media(max-width: 480px){
+  .classImageContainer{
+    width: 100%;
+  }
+  .classesContainer{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+  .classesContainer h2{
+    font-size: medium;
+  }
+  .classesContainer p{
+    font-size: small;
+  }
 }
 
 /* testimonials */
@@ -343,7 +383,6 @@ nav:hover{
   .review {
     flex: 1 0 30%; 
   }
-
 }
 @media (max-width: 768px) {
   .review {
@@ -354,6 +393,12 @@ nav:hover{
   }
   .reviews{
     padding-left: 40px;
+  }
+}
+@media(max-width: 480px){
+  .titleContainer{
+    width: 100%;
+    margin-left: 0;
   }
 }
 
@@ -413,6 +458,11 @@ nav:hover{
   }
   .article .icon{
     order: 2;
+  }
+}
+@media (max-width: 1024px) {
+  .articleImgContainer{
+    height: 100%;
   }
 }
 
@@ -490,4 +540,28 @@ button img{
 }
 .hidden{
   display: none;
+}
+@media(max-width: 480px){
+  button img{
+    width: 14px;
+  }
+  .sendEmail{
+    height: 10px;
+    font-size: 12px;
+  }
+  footer .bottom{
+    padding-top: 2rem;
+  }
+  footer .top h1{
+    font-size: 14px;
+  }
+  footer .bottom h3, .sendEmail::placeholder{
+    font-size: 12px;
+  }
+  .social a, .contactInfo p {
+    font-size: 10px;
+  }
+  footer .bottom{
+    justify-content: space-between;
+  }
 }
