@@ -252,7 +252,7 @@ function App() {
             <iframe src="https://www.youtube.com/embed/GSENAaAu8QQ?autoplay=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=GSENAaAu8QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           ) : (
-            <video className='hero-vid' src="https://videos.pexels.com/video-files/7580229/7580229-uhd_2560_1440_25fps.mp4" autoPlay playsinline loop disablePictureInPicture >
+            <video className='hero-vid' src="https://videos.pexels.com/video-files/7580229/7580229-uhd_2560_1440_25fps.mp4" autoPlay webkit-playsinline playsinline loop disablePictureInPicture >
               Your browser does not support the video tag.
             </video>
           )}
@@ -301,7 +301,7 @@ function App() {
           </div>
 
           <div className="scrolling-image">
-          <video src='https://videos.pexels.com/video-files/4327275/4327275-uhd_1440_2732_25fps.mp4' className='vertical-yoga' autoPlay playsinline loop disablePictureInPicture></video>
+          <video src='https://videos.pexels.com/video-files/4327275/4327275-uhd_1440_2732_25fps.mp4' className='vertical-yoga' autoPlay webkit-playsinline playsinline loop disablePictureInPicture></video>
           </div>
         </div>
 
