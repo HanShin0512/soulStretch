@@ -40,7 +40,12 @@ function App() {
       pinType: scrollEl.style.transform ? "transform" : "fixed",
     });
 
-    locoScroll.on("scroll", ScrollTrigger.update);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+      locoScroll.update(); // Make sure LocomotiveScroll recalculates positions
+    } else {
+      locoScroll.on("scroll", ScrollTrigger.update);
+    }
 
     //position fixed for nav
     const navbar = document.querySelector('nav');
@@ -209,7 +214,7 @@ function App() {
   const toggleSidebar = () => setSideBarShown((prev) => !prev); // Toggle sidebar state
 
   return (
-    <div className="appContainer" data-scroll-container>
+    <div className="appContainer" >
       
       {/* hero section */}
       <header className='hero-section'
