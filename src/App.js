@@ -40,12 +40,9 @@ function App() {
       pinType: scrollEl.style.transform ? "transform" : "fixed",
     });
 
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isSafari) {
-      locoScroll.update(); // Make sure LocomotiveScroll recalculates positions
-    } else {
-      locoScroll.on("scroll", ScrollTrigger.update);
-    }
+    locoScroll.on("scroll", () => {
+      requestAnimationFrame(() => ScrollTrigger.update());
+    });
 
     //position fixed for nav
     const navbar = document.querySelector('nav');
