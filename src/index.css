@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   padding: 0;
@@ -13,4 +16,7 @@ body {
   font-weight: bold;
   font-family: "Playfair Display";
   text-transform: capitalize;
+}
+[data-scroll-container] {
+  overflow: hidden;
 }
