@@ -27,7 +27,7 @@
     height: 100%;
   }
   .hero-section{
-    cursor: none;
+    pointer-events: none;
   }
 }
 
@@ -275,7 +275,8 @@ nav:hover{
     width: 100%;
   }
   .scrolling-image video, .scrolling-image{
-    width: 100%
+    width: 100%;
+    pointer-events: none;
   }
 }
 @media (max-width: 480px){
