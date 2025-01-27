@@ -49,7 +49,7 @@ nav{
 }
 .logo-nav{
   color: white;
-  font-size: 2.5vw;
+  font-size: 2.667vw;
   margin: 20px;
   margin-left: 0;
   margin-right: 0;
@@ -61,7 +61,7 @@ nav{
   text-transform: uppercase;
 }
 nav a{
-  font-size: 1vw;
+  font-size: 1.133vw;
   color: white;
   text-decoration: none;
   position: relative;
@@ -117,7 +117,7 @@ nav:hover{
   border-bottom: 1px solid #81AF88;
 }
 .bx{
-  font-size: 2vw;
+  font-size: 12px;
   border: none;
   background-color: transparent;
   color: white;
@@ -130,12 +130,23 @@ nav:hover{
   color: black;
 }
 /* navbar responsive */
+@media (max-width: 1024px){
+  .logo-nav{
+    font-size: 3.567vw;
+  }
+  nav a{
+    font-size: 1.4vw;
+  }
+}
 @media (max-width: 480px){
   .bx{
     display: block;
   }
   .hideOnMobile{
     display: none;
+  }
+  .logo-nav{
+    font-size: 3.567vw;
   }
 }
 
@@ -186,10 +197,13 @@ nav:hover{
     padding-top: 30px;
   }
   .desc-left{
-    font-size: 2vw;
+    font-size: 16px;
     width: 90%;
     text-align: center;
   }
+  .logo-left {
+    font-size: 20px;
+}
 }
 
 /* awards */
@@ -217,11 +231,23 @@ nav:hover{
   cursor: pointer;
   transform: scale(1.2);
 }
+@media (max-width: 1024px){
+  .yogaClassAwards{
+    padding: 100px;
+  }
+}
 @media (max-width: 480px){
   .yogaClassAwards{
     flex-direction: column;
     padding: 50px;
     align-items: center;
+  }
+  .zoom-img{
+    height: 22vw;
+  }
+  .award{
+    width: 39vw;
+    font-size: 2.75vw;
   }
 }
 
@@ -244,7 +270,7 @@ nav:hover{
 }
 .pinned-text {
   width: 600px;
-  font-size: 4.6vw;
+  font-size: 4.4vw;
   text-align: center;
 }
 .pinned-text h1{
@@ -256,16 +282,20 @@ nav:hover{
   text-transform: uppercase;
 }
 .pinned-text img{
-  width: 3.5vw;
+  width: 4vw;
 }
 .wavy-line{
-  font-family:verdana;
-  letter-spacing:-4px;
-  font-size:24px;
+  font-family: verdana;
+  letter-spacing: -4px;
+  font-size: 1.69vw;
 }
-.scrolling-image video {
-  width: 40vw;
+.vertical-yoga  {
   border-radius: 10px;
+}
+@media (min-width: 1024px) {
+  .descriptionII {
+    padding-bottom: 60px;
+  }
 }
 @media (max-width: 1024px){
   .descriptionII{
@@ -279,11 +309,14 @@ nav:hover{
   .scrolling-image video, .scrolling-image{
     width: 100%;
   }
+}@media (max-width: 768px){
+  .wavy-line{
+    font-size: 4.5vw;
+  }
 }
 @media (max-width: 480px){
   .descriptionII{
     flex-direction: column-reverse;
-    justify-content: space-evenly;
     height: 130vh;
   }
   .pinned-text{
@@ -291,6 +324,12 @@ nav:hover{
   }
   .scrolling-image video, .scrolling-image{
     width: 100%
+  }
+  .pinned-text img{
+    width: 6vw;
+  }
+  .wavy-line{
+    font-size: 5.5vw;
   }
 }
 
@@ -309,12 +348,13 @@ nav:hover{
 .classImageContainer{
   position: relative;
   overflow: hidden;
-  width: 480px;
-  height: 350px;
+  width: 100%;
+  padding-bottom: 70%;
   border-radius: .5rem;
   z-index: 2;
 }
 .class img {
+  position: absolute;
   width: 100%; 
   height: 100%;
   transition: transform 0.3s ease;
@@ -322,6 +362,9 @@ nav:hover{
 .class img:hover{
   cursor: pointer;
   transform: scale(1.05);
+}
+.classesContainer p{
+  font-size: 16px;
 }
 @media(max-width: 480px){
   .classImageContainer{
@@ -335,9 +378,7 @@ nav:hover{
   .classesContainer h2{
     font-size: medium;
   }
-  .classesContainer p{
-    font-size: small;
-  }
+  
 }
 
 /* testimonials */
@@ -356,6 +397,9 @@ nav:hover{
   overflow-x: hidden;
   overflow-y: auto;
   flex: 1 0 25%;
+}
+.review p{
+  font-size: 16px;
 }
 .reviewsScrollbar{
   position: relative;
@@ -384,6 +428,7 @@ nav:hover{
   text-transform: uppercase;
   line-height: 0;
 }
+
 @media (max-width: 900px) {
   .review {
     flex: 1 0 30%; 
@@ -404,6 +449,8 @@ nav:hover{
   .titleContainer{
     width: 100%;
     margin-left: 0;
+    line-height: 1;
+    text-align: center;
   }
 }
 
@@ -419,18 +466,20 @@ nav:hover{
 }
 .article .right{
   width: 890px;
-  font-size: 20px;
+  font-size: 16px;
 }
 .articleImgContainer{
   position: relative;
-  z-index: 2;
   overflow: hidden;
-  width: 500px;
-  height: 330px;
-  border-radius: 0.5rem;
+  width: 30%;
+  padding-bottom: 20%;
+  border-radius: .5rem;
+  z-index: 2;
 }
 .articleImgContainer img{
-  width: 100%;
+  position: absolute;
+  width: 100%; 
+  height: 100%;
   transition: transform 0.3s ease;
 }
 .article img:hover{
@@ -451,6 +500,12 @@ nav:hover{
   transition: transform 1s ease-in-out;
 }
 @media (max-width: 1024px) {
+  .articleImgContainer{
+    width: 55%;
+    padding-bottom: 25%;
+  }
+}
+@media (max-width: 768px) {
   .article{
     justify-content: space-between;
     flex-wrap: wrap;
@@ -464,16 +519,21 @@ nav:hover{
   .article .icon{
     order: 2;
   }
-}
-@media (max-width: 1024px) {
   .articleImgContainer{
-    height: 100%;
+    width: 70%;
+    padding-bottom: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .articleImgContainer{
+    width: 100%;
+    padding-bottom: 70%;
   }
 }
 
 /* footer */
 .logo.footer{
-  font-size: 24px;
+  font-size: 3.2vw;
 }
 footer{
   margin-top: 7rem;
@@ -546,6 +606,15 @@ button img{
 }
 .hidden{
   display: none;
+}
+@media(max-width: 1024px) {
+  .social a, .contactInfo p {
+    font-size: 2vw;
+  }
+  footer .bottom{
+    width: 95%;
+    justify-content: space-between;
+  }
 }
 @media(max-width: 480px){
   button img{

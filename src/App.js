@@ -315,18 +315,17 @@ function App() {
             <p> Guiding your journey to balance and mindfulness </p>
           </div>
 
-          <div className="scrolling-image">
           <video src='https://videos.pexels.com/video-files/4327275/4327275-uhd_1440_2732_25fps.mp4' className='vertical-yoga' autoPlay webkit-playsInline playsInline loop disablePictureInPicture></video>
-          </div>
+          
         </div>
 
       </section>
 
       {/* line */}
-      <div className='line'></div>
+      <div className='line'  id='classes'></div>
 
       {/* classes section */}
-      <section id='classes'>
+      <section>
 
         {/* classes title container  */}
         <div className='titleContainer classes'>
@@ -342,7 +341,7 @@ function App() {
             <div className='classImageContainer'>
               <img src='/classes/firstClass.jpg' alt='yoga class'></img>
             </div>
-            <h2 className='name'>Sunrise Flow</h2>
+            <h1 className='name'>Sunrise Flow</h1>
             <p className='classLvl'> <b>Level</b>: Beginner to Intermediate</p>
             <p className='classDesc'> Gentle yet energizing sequence that focuses on awakening the body and calming the mind. This class incorporates sun salutations, light stretching, and breathwork to set a positive tone for the day.</p>
             <p className='duration'> <b>Duration</b>: 45 minutes </p>
@@ -352,7 +351,7 @@ function App() {
             <div className='classImageContainer'>
               <img src='/classes/secClass.jpg' alt='yoga class'></img>
             </div>
-            <h2 className='name'>Power Pulse Yoga</h2>
+            <h1 className='name'>Power Pulse Yoga</h1>
             <p className='classLvl'> <b>Level</b>: Intermediate to Advanced </p>
             <p className='classDesc'> Perfect for those who want to level up their yoga practice! A dynamic and strength-focused yoga session that combines traditional poses with modern power moves. Expect to sweat and challenge your limits.</p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
@@ -362,7 +361,7 @@ function App() {
             <div className='classImageContainer'>
               <img src='/classes/thirdClass.png' alt='yoga class'></img>
             </div>
-            <h2 className='name'>Yin & Yang</h2>
+            <h1 className='name'>Yin & Yang</h1>
             <p className='classLvl'> <b>Level</b>: All Levels</p>
             <p className='classDesc'> An intimate class designed for partners to sweat together and connect through breath and movement. You’ll work together to support each other in poses that foster trust and communication. </p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
@@ -373,10 +372,10 @@ function App() {
       </section>
 
       {/* line */}
-      <div className='line'></div>
+      <div className='line' id='testimonials'></div>
 
       {/* testimonials section */}
-      <section id='testimonials'>
+      <section>
 
         {/* title container for reviews */}
         <div className='titleContainer review'>
@@ -431,14 +430,14 @@ function App() {
         </div>   
 
         {/* scrollbar for reviews */}
-        <div className='reviewsScrollbar'>
+        <div className='reviewsScrollbar' id='articles'>
           <div className='scrollbarProgress' ref={progressBarRef}></div>
         </div>
 
       </section>
 
       {/* articles section */}
-      <section id='articles'>   
+      <section>   
 
         {/* title container for articles */}
         <div className='titleContainer articles'>
