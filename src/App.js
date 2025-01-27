@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
 import { Draggable } from "gsap/Draggable";
+import Lenis from '@studio-freight/lenis';
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -16,71 +16,62 @@ function App() {
   const [bgColor, setBgColor] = useState('transparent'); 
   const [textColor, setTextColor] = useState('#FFFFFF');
   const [sidebarShown, setSideBarShown] = useState(false);
+  const lenis = useRef(null);
 
+  //lenis
   useEffect(() => {
-
-    //smooth scroll
-    const scrollEl = document.querySelector('.appContainer');
-    const locoScroll = new LocomotiveScroll({
-      el: scrollEl,
+    //initialise lenis
+    lenis.current = new Lenis({
+      duration: 1.5,
+      easing: (t) => 1 - Math.pow(1 - t, 2), //cubic easing for smooth stop
       smooth: true,
-      mobile: {
-        smooth: true
-      },
-      tablet: {
-        smooth: true
-      },
-      multiplier: 0.6,
-      revealClass: 'is-reveal',
+      smoothTouch: true, //for touch screens
     });
 
-    // Tell ScrollTrigger to use LocomotiveScroll
-    ScrollTrigger.scrollerProxy(scrollEl, {
-      scrollTop(value) {
-        return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-      },
-      pinType: scrollEl.style.transform ? "transform" : "fixed",
-    });
+    const animate = (time) => {
+      lenis.current.raf(time);
+      requestAnimationFrame(animate);
+    };
 
-    locoScroll.on("scroll", ScrollTrigger.update);
+    requestAnimationFrame(animate);
 
-    //position fixed for nav
-    const navbar = document.querySelector('nav');
-    locoScroll.on('scroll', ({ scroll }) => {
-      navbar.style.top = `${scroll.y}px`;
-      //change nav color 
-      const heroVid = document.querySelector('.hero-vid');
-      const heroHeight = heroVid.offsetHeight;
-      //if scrolled more than hero vid
-      if (scroll.y > heroHeight) {
+    // Cleanup on unmount
+    return () => {
+      lenis.current.destroy();
+    };
+  }, []);
+
+  //change navbar color
+  useEffect(() => {
+    const changeNavColor = () => {
+      const scrollPosition = window.scrollY;
+      const heroSect = document.querySelector('.hero-section');
+      const heroHeight = heroSect.offsetHeight;
+      if(scrollPosition >= heroHeight-1){
         setBgColor('#FFFFFF');  // Set background to white
         setTextColor('#000000'); // Set text to black
       } else {
         setBgColor('transparent'); // Make navbar transparent
         setTextColor('#FFFFFF');  // Keep text white
       }
-    });
+    }
+    window.addEventListener('scroll', changeNavColor);
+    return () => {
+      window.removeEventListener('scroll', changeNavColor);
+    }
+  }, []);
+  
+  //scroll to sections
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    lenis.current.scrollTo(element);
+  }
 
-    //scroll to navlinks
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if(target){
-          locoScroll.scrollTo(target);
-        }
-      })
-    })
-
-    // Pinned text animation
+  // Pinned text animation
+  useEffect(() => {
     const pinnedText = document.querySelector('.pinned-text');
     ScrollTrigger.matchMedia({
-      // For desktop
+      // only for desktops
       "(min-width: 1025px)": function () {
         gsap.to(pinnedText, {
           scrollTrigger: {
@@ -89,7 +80,7 @@ function App() {
             end: "bottom bottom",
             pin: true,
             scrub: 1,
-            scroller: scrollEl,
+
           },
         });
       }
@@ -98,6 +89,7 @@ function App() {
     //color change
     const changeLotus = document.querySelector('.pinned-text img');
     const lines = document.querySelectorAll('.line');
+    const navbar = document.querySelector('nav');
     document.body.style.transition = "all 1s ease";
     gsap.to(document.body, {
       scrollTrigger: {
@@ -105,7 +97,7 @@ function App() {
         start: "top-=300px top",
         end: "bottom+=300px bottom",
         scrub: 1,
-        scroller: scrollEl,
+
         onEnter: () => {
           document.body.style.backgroundColor = '#81AF88' 
           document.body.style.color = '#FFFFFF'
@@ -135,8 +127,16 @@ function App() {
           navbar.style.opacity = '1'
         }
       }
-    })
+    });
 
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  useEffect(() => {
+    
     //drag reviews
     const reviewsContainer = containerRef.current;
     const reviews = reviewsContainer.querySelector(".reviews");
@@ -167,16 +167,13 @@ function App() {
         }
       },
     });
-
-    // Cleanup on unmount
+  
     return () => {
-      locoScroll.destroy();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       const instance = Draggable.get(reviews);
       if (instance) {
         instance.kill(); // Destroy Draggable instance
       }
-    };
+    }
   }, []);
 
   // custom cursor
@@ -228,23 +225,23 @@ function App() {
           style={{ backgroundColor: bgColor }}
           onMouseEnter={handleMouseLeave}
           onMouseLeave={handleMouseEnter}>
-          <a className='logo logo-nav' style={{ color: textColor }} href='#hero'>Soul Stretch
+          <a className='logo logo-nav' style={{ color: textColor }} href='#hero' onClick={() => scrollToSection('hero')}>Soul Stretch
           </a>
           <div className='links'>
-            <a href='#about' style={{ color: textColor }} className='hideOnMobile'> About </a>
-            <a href='#classes' style={{ color: textColor }} className='hideOnMobile'> Classes </a>
-            <a href='#testimonials' style={{ color: textColor }} className='hideOnMobile'> Testimonials </a>
-            <a href='#articles' style={{ color: textColor }} className='hideOnMobile'> Articles </a>
-            <a href='#contact' style={{ color: textColor }} className='hideOnMobile'> Contact </a>
+            <a href='#about' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('about')}> About </a>
+            <a href='#classes' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('classes')}> Classes </a>
+            <a href='#testimonials' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('testimonials')}> Testimonials </a>
+            <a href='#articles' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('articles')}> Articles </a>
+            <a href='#contact' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('contact')}> Contact </a>
             <button className='bx bx-menu' style={{ color: textColor }} onClick={toggleSidebar}></button>
           </div>
           <div className='links sidebar' >
               <button className='bx bx-x' onClick={toggleSidebar}></button>
-              <a href='#about'> About </a>
-              <a href='#classes'> Classes </a>
-              <a href='#testimonials'> Testimonials </a>
-              <a href='#articles'> Articles </a>
-              <a href='#contact'> Contact </a>
+              <a href='#about' onClick={() => scrollToSection('about')}> About </a>
+              <a href='#classes' onClick={() => scrollToSection('testimonials')}> Classes </a>
+              <a href='#testimonials' onClick={() => scrollToSection('testimonials')}> Testimonials </a>
+              <a href='#articles' onClick={() => scrollToSection('articles')}> Articles </a>
+              <a href='#contact' onClick={() => scrollToSection('contact')}> Contact </a>
           </div>
         </nav>
 
@@ -330,7 +327,7 @@ function App() {
         {/* classes title container  */}
         <div className='titleContainer classes'>
           <h1> Stretch & Strengthen </h1>
-          <span class="wavy-line">∿∿∿∿∿∿∿∿</span>  
+          <span class="wavy-line">∿∿∿∿∿∿∿∿</span>
           <h1>  Join Our Classes </h1>
         </div>
 

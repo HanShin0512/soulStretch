@@ -35,7 +35,7 @@
 
 /* navbar */
 nav{
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -90,7 +90,7 @@ nav:hover{
   cursor:default;
 }
 .links.sidebar{
-  height: 90vh;
+  height: 100vh;
   width: 100px;
   position: absolute;
   display: flex;
@@ -114,7 +114,6 @@ nav:hover{
 .links.sidebar a{
   font-size: 12px;
   color: black;
-  border-bottom: 1px solid #81AF88;
 }
 .bx{
   font-size: 12px;
@@ -308,6 +307,9 @@ nav:hover{
   }
   .scrolling-image video, .scrolling-image{
     width: 100%;
+  }
+  .wavy-line{
+    font-size: 3vw;
   }
 }@media (max-width: 768px){
   .wavy-line{
