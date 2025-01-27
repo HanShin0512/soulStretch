@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import 'locomotive-scroll/src/locomotive-scroll.scss';
 import { Draggable } from "gsap/Draggable";
 import Lenis from '@studio-freight/lenis';
 
