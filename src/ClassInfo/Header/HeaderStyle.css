@@ -1,0 +1,61 @@
+.hero.classes{
+    overflow-x: hidden;
+}
+.title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.title h1{
+    font-family: "Playfair Display";
+    font-size: 6.667vw;
+    color: var(--secondaryColor);
+    line-height: 30%;
+}
+.title p{
+    color: white;
+    font-size: 1.267vw;
+}
+.overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(76, 76, 76, 0.329);
+}
+.headerImg{
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    object-fit: cover;
+}
+.scrollToSignUp{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* top: 91%; */
+    bottom: 2%;
+    width: 100%;
+    gap: .5rem;
+}
+.scrollToSignUp button{
+    font-size: 2.333vw;
+    background-color: var(--mainGreen);
+    border: none;
+    color: white;
+    border-radius: 1.3rem;
+    padding: .6rem;
+    padding-left: 20%;
+    padding-right: 20%;
+    transition: background-color 0.3s ease;
+}
+.scrollToSignUp button:hover{
+    cursor: pointer;
+    background-color: var(--greenHover);
+}
+.curve-arrow{
+  height: 200px;
+}

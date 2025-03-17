@@ -1,0 +1,30 @@
+.faqTitle{
+    font-family: var(--titleFont);
+    margin-top: 12rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.faqFlex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.qContainer{
+    border-bottom: 2px solid var(--mainGreen);
+    width: 40%;
+}
+.qContainer .question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+}
+#ans1, #ans2, #ans3, #ans4, #ans5, #ans6{
+    display: none;
+    transform: translateY(-150%);
+}

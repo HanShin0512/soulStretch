@@ -1,0 +1,57 @@
+.rulesTitle{
+    font-family: var(--titleFont);
+    font-size: 1.933vw;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 12rem;
+    padding-bottom: 7rem;
+}
+.flower{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 12rem;
+}
+.flower .top{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+.flower .bottom{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+.petal{
+    width: 270px;
+    height: 260px;
+    background-color: var(--secondaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.petal p{
+    padding: 1.5rem;
+
+}
+.tl{
+    border-radius: 0px 186px 0px 109px;
+    -webkit-border-radius: 0px 186px 0px 109px;
+    -moz-border-radius: 0px 186px 0px 109px;
+}
+.tr{
+    border-radius: 185px 0px 110px 0px;
+    -webkit-border-radius: 185px 0px 110px 0px;
+    -moz-border-radius: 185px 0px 110px 0px;
+}
+.bl{
+    border-radius: 185px 0px 110px 0px;
+    -webkit-border-radius: 185px 0px 110px 0px;
+    -moz-border-radius: 185px 0px 110px 0px;
+}
+.br{
+    border-radius: 0px 185px 0px 110px;
+    -webkit-border-radius: 0px 185px 0px 110px;
+    -moz-border-radius: 0px 185px 0px 110px;
+}

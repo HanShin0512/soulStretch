@@ -1,0 +1,46 @@
+.sectionWrap{
+    width: 90%;
+    margin: auto;
+}
+.teachersTitle{
+    font-family: var(--titleFont);
+    margin-top: 12rem;
+    text-align: center;
+}
+.teacherDesc{
+    text-align: center;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+.teachersFlex{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: auto;
+}
+.online, .offline{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    img{
+        height: 30.667vw;
+        width: 90%;
+        object-fit: cover;
+        object-position: 10% 30%;
+        border-radius: 3rem;
+    }
+    .teacherOnline{
+        color: var(--mainGreen);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .teacherOffline{
+        color: var(--offline);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+.teacherName{
+    font-family: var(--titleFont);
+}
