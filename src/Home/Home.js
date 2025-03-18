@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from "gsap/Draggable";
-import { useNavigate } from 'react-router-dom';
 import './HomeStyle.css';
 import Navbar from '../Navbar/Navbar';
+import Article from '../Article/Article';
+import Footer from '../Footer/Footer';
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -13,11 +14,11 @@ function Home() {
   //references and states
   const containerRef = useRef(null); //drag reviews
   const progressBarRef = useRef(null); // Reference to the progress bar
-  const navigate = useNavigate();
 
-  // Pinned text animation
   useEffect(() => {
+
     const pinnedText = document.querySelector('.pinned-text');
+
     ScrollTrigger.matchMedia({
       // only for desktops
       "(min-width: 1025px)": function () {
@@ -28,7 +29,6 @@ function Home() {
             end: "bottom bottom",
             pin: true,
             scrub: 1,
-
           },
         });
       }
@@ -124,58 +124,28 @@ function Home() {
     }
   }, []);
 
-  // custom cursor
-  const [cursorPosition, setCursorPosition] = useState({ x: '0%', y: '0%' });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
-  useEffect(() => {
-    // Check if it's a desktop device
-    setIsDesktop(!('ontouchstart' in window));
-  }, []);
-  const handleMouseEnter = () => {
-    if (window.location.pathname === '/') {
-      setIsHovered(true);
-    }
-  };
-  const handleMouseLeave = () => {
-    if (window.location.pathname === '/') {
-      setIsHovered(false);
-    }
-  };
-  const handleMouseMove = (e) => {
-    isDesktop &&
-    setCursorPosition({ x: e.clientX, y: e.clientY });
-  };
-
   // change hero vid when clicked
+  //change cursor when video viewed
   const [isYouTube, setIsYouTube] = useState(false);
-  const handleVideoChange = () => setIsYouTube(!isYouTube);
+  const handleVideoChange = () => {
+    setIsYouTube(!isYouTube);
+    const stopVidCursor = document.querySelector('.hero.home');
+    stopVidCursor.style.cursor = isYouTube
+      ? "url('http://localhost:3000/icons/play-video.png') 64 64, auto"
+      : "url('http://localhost:3000/icons/stop-video.png') 64 64, auto";
+  }
+  
 
   return (
     <div className="homeContainer" >
       
       {/* hero section */}
-      <header className='hero home'
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
-        >
+      <header className='hero home'>
 
         {/* navbar */}
-        <Navbar setIsHovered={setIsHovered} />
+        <Navbar/>
 
-        <div onClick={handleVideoChange} id='hero'>
-          {/* view cursor */}
-          {isDesktop && isHovered && (
-            <div className="customCursor" 
-            style={{
-              transform: `translate(${cursorPosition.x - 80}px, ${cursorPosition.y - 80}px)`,
-              opacity: 1
-            }}>
-              <p>View Video</p>
-            </div>
-          )}
-          
+        <div onClick={handleVideoChange} id='hero'>          
 
           {/* video */}
           {isYouTube ? (
@@ -255,35 +225,35 @@ function Home() {
 
           <div className='class firstClass'>
             <div className='classImageContainer'>
-              <img src='/classes/firstClass.jpg' alt='yoga class'></img>
+              <img src='/classes/firstClass.jpg' alt='yoga class' onClick={() => {window.open("/ClassInfo/SunriseFlow", '_blank');}}></img>
             </div>
             <h1 className='name'>Sunrise Flow</h1>
             <p className='classLvl'> <b>Level</b>: Beginner to Intermediate</p>
             <p className='classDesc'> Gentle yet energizing sequence that focuses on awakening the body and calming the mind. This class incorporates sun salutations, light stretching, and breathwork to set a positive tone for the day.</p>
             <p className='duration'> <b>Duration</b>: 45 minutes </p>
-            <button className='classSignup' onClick={() => {navigate("/ClassInfo/SunriseFlow"); window.scrollTo(0, 0);}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {window.open("/ClassInfo/SunriseFlow", '_blank');}}>Sign Up Now</button>
           </div>
 
           <div className='class secClass'>
             <div className='classImageContainer'>
-              <img src='/classes/secClass.jpg' alt='yoga class'></img>
+              <img src='/classes/secClass.jpg' alt='yoga class' onClick={() => {window.open("/ClassInfo/PowerPulse", '_blank');}}></img>
             </div>
             <h1 className='name'>Power Pulse Yoga</h1>
             <p className='classLvl'> <b>Level</b>: Intermediate to Advanced </p>
             <p className='classDesc'> Perfect for those who want to level up their yoga practice! A dynamic and strength-focused yoga session that combines traditional poses with modern power moves. Expect to sweat and challenge your limits.</p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
-            <button className='classSignup' onClick={() => {navigate("/ClassInfo/PowerPulse"); window.scrollTo(0, 0);}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {window.open("/ClassInfo/PowerPulse");}}>Sign Up Now</button>
           </div>
 
           <div className='class thirdClass'>
             <div className='classImageContainer'>
-              <img src='/classes/thirdClass.png' alt='yoga class'></img>
+              <img src='/classes/thirdClass.png' alt='yoga class' onClick={() => {window.open("/ClassInfo/YinYan", '_blank');}}></img>
             </div>
             <h1 className='name'>Yin & Yang</h1>
             <p className='classLvl'> <b>Level</b>: All Levels</p>
             <p className='classDesc'> An intimate class designed for partners to sweat together and connect through breath and movement. You’ll work together to support each other in poses that foster trust and communication. </p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
-            <button className='classSignup' onClick={() => {navigate("/ClassInfo/YinYan"); window.scrollTo(0, 0);}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {window.open("/ClassInfo/YinYan", '_blank');}}>Sign Up Now</button>
           </div>
 
         </div>  
@@ -366,133 +336,93 @@ function Home() {
         </div>
 
         <div className='articles'>
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/balance.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Finding Balance: The Art of Mindful Yoga </h1>
-                <p> Discover how practicing mindfulness during yoga can transform your physical and mental well-being. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/balance.jpg'}
+            title={'Finding Balance: The Art of Mindful Yoga'}  
+            desc={'Discover how practicing mindfulness during yoga can transform your physical and mental well-being.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/power.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> The Power of Daily Yoga </h1>
-                <p> Uncover the benefits of a consistent yoga practice and how it can energize your life. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/power.jpg'}
+            title={'The Power of Daily Yoga'}  
+            desc={'Uncover the benefits of a consistent yoga practice and how it can energize your life.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/modern.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Yoga for Modern Life </h1>
-                <p> Learn yoga techniques designed to combat daily stress and restore inner peace. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/modern.jpg'}
+            title={'Yoga for Modern Life'}  
+            desc={'Learn yoga techniques designed to combat daily stress and restore inner peace.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/beginner.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Flow and Glow: Yoga for Beginners Made Easy </h1>
-                <p> A friendly guide to starting yoga and finding your flow, no matter your experience level.</p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/beginner.jpg'}
+            title={'Flow and Glow: Yoga for Beginners Made Easy'}  
+            desc={'A friendly guide to starting yoga and finding your flow, no matter your experience level.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/soul.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Soulful Movements </h1>
-                <p> Dive into the spiritual and philosophical roots of yoga and connect with your soul. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/soul.jpg'}
+            title={'Soulful Movements'}  
+            desc={'Dive into the spiritual and philosophical roots of yoga and connect with your soul.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/self-discovery.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Breathe, Bend, and Blossom </h1>
-                <p> Discover how yoga can be a journey of personal transformation and self-discovery. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/self-discovery.jpg'}
+            title={'Breathe, Bend, and Blossom'}  
+            desc={'Discover how yoga can be a journey of personal transformation and self-discovery.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/nature.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Yoga and the Seasons: Aligning Your Practice with Nature </h1>
-                <p> Tips for adapting your yoga routine to match the rhythms of nature throughout the year. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/nature.jpg'}
+            title={'Yoga and the Seasons: Aligning Your Practice with Nature'}  
+            desc={'Tips for adapting your yoga routine to match the rhythms of nature throughout the year.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/rest.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> The Joy of Rest </h1>
-                <p> Find out why slowing down and practicing restorative poses is vital for your health. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/rest.jpg'}
+            title={'The Joy of Rest'}  
+            desc={'Find out why slowing down and practicing restorative poses is vital for your health.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/confidence.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Empowered Poses: How Yoga Builds Confidence </h1>
-                <p> Learn how specific yoga poses can boost your self-esteem and self-awareness. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/confidence.jpg'}
+            title={'Empowered Poses: How Yoga Builds Confidence'}  
+            desc={'Learn how specific yoga poses can boost your self-esteem and self-awareness.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
-          <div className='article'>
-              <div className='articleImgContainer'>
-                <img src='/articles/secret.jpg' alt='article'></img>
-              </div>
-              <div className='right'>
-                <h1> Soul Stretch Secrets </h1>
-                <p> Master key techniques to deepen your stretches and strengthen your practice. </p>
-              </div>
-              <img className='icon' src='/icons/chakra.png' alt='icon'></img>
-          </div>
+          <Article
+            img={'/articles/secret.jpg'}
+            title={'Soul Stretch Secrets'}  
+            desc={'Master key techniques to deepen your stretches and strengthen your practice.'}
+          >
+          </Article>
           {/* line */}
           <div className='line'></div>
 
@@ -500,51 +430,7 @@ function Home() {
       </section>
 
       {/* footer */}
-      <footer id='contact'>
-
-        {/* logo and title */}
-        <div className='top'>
-          <p className='logo footer'>Soul Stretch
-          </p>
-          <h1> Made with Love (and Lots of Debugging) by Han Shin – Let’s Connect! </h1>
-        </div>
-
-        <div className='bottom'>
-
-          {/* input email */}
-          <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="56c117b5-fe5a-4b82-b1a7-3edd3606dcf6" />
-            
-            <input
-              className="sendEmail"
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              required
-            />
-            
-            {/* Honeypot Spam Protection */}
-            <input type="checkbox" name="botcheck" className="hidden" />
-            
-            <button type="submit">
-              <img src="/icons/right-arrow.png" alt="submit" />
-            </button>
-          </form>
-
-          {/* social media and contact information */}
-          <div className='social'>
-              <h3>Social</h3>
-              <a href='https://www.linkedin.com/in/thwin-han-shin-44b157334/' target="_blank" rel='noreferrer'> LinkedIn </a> 
-              <a href='https://github.com/HanShin0512' target="_blank" rel='noreferrer'> GitHub </a>
-          </div>
-          <div className='contactInfo'>
-              <h3>Contact Information</h3>
-              <p>Choa Chu Kang</p>
-              <p> +65 9022 7760 </p>
-              <p> thwinhanshin123@gmail.com </p>
-          </div>
-        </div>
-      </footer>
+      <Footer></Footer>
 
     </div>
     

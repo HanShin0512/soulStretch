@@ -6,8 +6,12 @@ import Prices from "./Prices/Prices";
 import Teachers from "./Teachers/Teachers";
 import Faq from "./Faq/Faq";
 import ClassSignup from "./ClassSignup/ClassSignup";
+import Footer from "../Footer/Footer";
+import { useState } from "react";
 
 function PowerPulse(){
+
+    const [scrollToSection, setScrollToSection] = useState(null);
 
     const scheduleData = {
         "Monday": [{ time: "7:00AM", platform: "Online", teacher: "Max", price: "$15" }, { time: "6:00PM", platform: "In Person", teacher: "Sophie", price: "$20" }],
@@ -21,13 +25,14 @@ function PowerPulse(){
 
     return(
         <div>
-            <Navbar></Navbar>
+            <Navbar setScrollToSection={setScrollToSection}></Navbar>
             <PageHeader
                 level="Intermediate to Advanced"
                 duration="60 minutes"
                 title="Power Pulse"
                 desc="Perfect for those who want to level up their yoga practice! A dynamic and strength-focused yoga session that combines traditional poses with modern power moves. Expect to sweat and challenge your limits."
-                image="https://images.pexels.com/photos/8436457/pexels-photo-8436457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+                image="https://images.pexels.com/photos/8436457/pexels-photo-8436457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                scrollToSection={scrollToSection}>
             </PageHeader>
             <RulesFlower></RulesFlower>
             <Prices scheduleData={scheduleData}></Prices>
@@ -41,6 +46,7 @@ function PowerPulse(){
             ></Teachers>
             <Faq></Faq>
             <ClassSignup scheduleData={scheduleData}></ClassSignup>
+            <Footer></Footer>
         </div>
     );
 }

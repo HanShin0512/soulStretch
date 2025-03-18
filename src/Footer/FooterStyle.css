@@ -1,0 +1,109 @@
+/* footer */
+.logo.footer{
+    font-size: 3.2vw;
+}
+footer{
+    margin-top: 7rem;
+    background-color: var(--mainGreen);
+    color: white;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    overflow: hidden;
+}
+footer .top{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+footer .top h1{
+    font-size: 2vw;
+    width: 50%;
+}
+footer .bottom{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    padding-top: 5rem;
+}
+footer .bottom h3{
+    font-size: 2vw;
+}
+.sendEmail{
+    width: 25vw;
+    background-color: var(--mainGreen);
+    padding: 1rem;
+    border: none;
+    border-bottom: 3px solid white;
+    height: 20px;
+    font-size: 1.5vw;
+    color: white;
+}
+.sendEmail::placeholder{
+    font-size: 1.5vw;
+    color: white;
+}
+.sendEmail:focus{
+    outline: none;
+}
+.emailForm button{
+    background-color: var(--mainGreen);
+    border: none;
+}
+.emailForm button:hover{
+    cursor: pointer;
+}
+  button img{
+    width: 24px;
+}
+  .social a {
+    display: block;
+    text-decoration: none;
+    line-height: normal;
+    color: white;
+    margin-bottom: 16px;
+    font-size: 1vw;
+}
+  .contactInfo p{
+    font-size: 1vw;
+}
+  .social a:hover{
+    text-decoration: underline;
+}
+  .hidden{
+    display: none;
+}
+@media(max-width: 1024px) {
+    .social a, .contactInfo p {
+        font-size: 2vw;
+    }
+    footer .bottom{
+        width: 95%;
+        justify-content: space-between;
+    }
+}
+@media(max-width: 480px){
+    button img{
+        width: 14px;
+    }
+    .sendEmail{
+        height: 10px;
+        font-size: 12px;
+    }
+    footer .bottom{
+        padding-top: 2rem;
+    }
+    footer .top h1{
+        font-size: 14px;
+    }
+    footer .bottom h3, .sendEmail::placeholder{
+        font-size: 12px;
+    }
+    .social a, .contactInfo p {
+        font-size: 10px;
+    }
+    footer .bottom{
+        justify-content: space-between;
+    }
+}

@@ -11,11 +11,11 @@
     background: url("https://images.pexels.com/photos/6019761/pexels-photo-6019761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
     background-attachment: fixed;
     background-size: cover;
-    background-position: center 150%;
+    background-position: center;
 }
 .hero-img{
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
 }
 .youtube-container {
     overflow: hidden;
@@ -39,23 +39,7 @@
   
 /* custom cursor */
 .hero.home{
-    position: relative;
-    cursor: none;
-}
-.customCursor{
-    position: absolute;
-    top: 50;
-    left: 50;
-    background-color: white;
-    padding: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-radius: 5rem;
-    border: 1.5px solid black;
-}
-.customCursor p{
-    text-transform: uppercase;
-    font-family: var(--titleFont);
+    cursor: url('http://localhost:3000/icons/play-video.png')40 40, auto;
 }
   
 /* about us section */
@@ -156,6 +140,7 @@
     height: 150vh; 
 }
 .pinned-text {
+    max-width: 600px;
     width: 600px;
     font-size: 4.4vw;
     text-align: center;
@@ -355,189 +340,3 @@
     }
 }
   
-/* articles */
-.article{
-    width: 90%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-}
-.article .right{
-    width: 890px;
-    font-size: 16px;
-}
-.articleImgContainer{
-    position: relative;
-    overflow: hidden;
-    width: 30%;
-    padding-bottom: 20%;
-    border-radius: .5rem;
-    z-index: 2;
-}
-.articleImgContainer img{
-    position: absolute;
-    width: 100%; 
-    height: 100%;
-    transition: transform 0.3s ease;
-}
-.article img:hover{
-    transform: scale(1.05);
-}
-.article .icon{
-    width: 32px;
-    height: 32px;
-}
-.article:hover{
-    cursor: pointer;
-}
-.article:hover .right{
-    text-decoration: underline;
-}
-.article:hover .icon{
-    transform: rotate(360deg);
-    transition: transform 1s ease-in-out;
-}
-@media (max-width: 1024px) {
-    .articleImgContainer{
-        width: 55%;
-        padding-bottom: 25%;
-    }
-}
-@media (max-width: 768px) {
-    .article{
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .article .right{
-        order: 3;
-    }
-    .articleImgContainer{
-        order: 1;
-    }
-    .article .icon{
-        order: 2;
-    }
-    .articleImgContainer{
-        width: 70%;
-        padding-bottom: 50%;
-    }
-}
-@media (max-width: 480px) {
-    .articleImgContainer{
-        width: 100%;
-        padding-bottom: 70%;
-    }
-}
-  
-/* footer */
-.logo.footer{
-    font-size: 3.2vw;
-}
-footer{
-    margin-top: 7rem;
-    background-color: var(--mainGreen);
-    color: white;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    overflow: hidden;
-}
-footer .top{
-    width: 90%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-}
-footer .top h1{
-    font-size: 2vw;
-    width: 50%;
-}
-footer .bottom{
-    width: 90%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-evenly;
-    padding-top: 5rem;
-}
-  footer .bottom h3{
-    font-size: 2vw;
-}
-  .sendEmail{
-    width: 25vw;
-    background-color: var(--mainGreen);
-    padding: 1rem;
-    border: none;
-    border-bottom: 3px solid white;
-    height: 20px;
-    font-size: 1.5vw;
-    color: white;
-}
-  .sendEmail::placeholder{
-    font-size: 1.5vw;
-    color: white;
-}
-  .sendEmail:focus{
-    outline: none;
-}
-  form button{
-    background-color: var(--mainGreen);
-    border: none;
-}
-  form button:hover{
-    cursor: pointer;
-}
-  button img{
-    width: 24px;
-}
-  .social a {
-    display: block;
-    text-decoration: none;
-    line-height: normal;
-    color: white;
-    margin-bottom: 16px;
-    font-size: 1vw;
-}
-  .contactInfo p{
-    font-size: 1vw;
-}
-  .social a:hover{
-    text-decoration: underline;
-}
-  .hidden{
-    display: none;
-}
-@media(max-width: 1024px) {
-    .social a, .contactInfo p {
-        font-size: 2vw;
-    }
-    footer .bottom{
-        width: 95%;
-        justify-content: space-between;
-    }
-}
-@media(max-width: 480px){
-    button img{
-        width: 14px;
-    }
-    .sendEmail{
-        height: 10px;
-        font-size: 12px;
-    }
-    footer .bottom{
-        padding-top: 2rem;
-    }
-    footer .top h1{
-        font-size: 14px;
-    }
-    footer .bottom h3, .sendEmail::placeholder{
-        font-size: 12px;
-    }
-    .social a, .contactInfo p {
-        font-size: 10px;
-    }
-    footer .bottom{
-        justify-content: space-between;
-    }
-}

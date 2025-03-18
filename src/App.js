@@ -10,6 +10,8 @@ import Prices from "./ClassInfo/Prices/Prices";
 import Teachers from "./ClassInfo/Teachers/Teachers";
 import Faq from "./ClassInfo/Faq/Faq";
 import ClassSignup from "./ClassInfo/ClassSignup/ClassSignup";
+import Article from "./Article/Article";
+import Footer from "./Footer/Footer";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/ClassInfo/Teachers/Teachers" element={<Teachers />} />
         <Route path="/ClassInfo/Faq/Faq" element={<Faq />} />
         <Route path="/ClassInfo/ClassSignup/ClassSignup" element={<ClassSignup/>}></Route>
+        <Route path="/Article/Article" element={<Article/>}></Route>
+        <Route path="/Footer/Footer" element={<Footer/>}></Route>
       </Routes>
     </BrowserRouter>
   );

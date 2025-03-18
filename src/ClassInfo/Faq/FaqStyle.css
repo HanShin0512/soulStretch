@@ -25,6 +25,10 @@
     }
 }
 #ans1, #ans2, #ans3, #ans4, #ans5, #ans6{
-    display: none;
-    transform: translateY(-150%);
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+#arrow1, #arrow2, #arrow3, #arrow4, #arrow5, #arrow6{
+    transition: transform 0.3s ease;
 }

@@ -11,17 +11,17 @@ function ClassSignup ({scheduleData}) {
 
     const availableClasses = selectedDay ? scheduleData[selectedDay] : [];
 
-  // Toggle class selection
-  const handleClassSelection = (session) => {
-    setSelectedClasses((prev) => 
-        prev.includes(session) 
-        ? prev.filter((s) => s !== session) 
-        : [...prev, session]
-    )
-  };
+    // Toggle class selection
+    const handleClassSelection = (session) => {
+        setSelectedClasses((prev) => 
+            prev.includes(session) 
+            ? prev.filter((s) => s !== session) 
+            : [...prev, session]
+        )
+    };
 
     return (
-        <form>
+        <form id="classReg">
             <h1 className="classRegTitle">Class Registration</h1>
 
             <h2 className="personalTitle"> Personal Information </h2>

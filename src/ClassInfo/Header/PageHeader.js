@@ -1,7 +1,7 @@
 import React from "react";
 import './HeaderStyle.css';
 
-function PageHeader({level, duration, title, desc, image}){
+function PageHeader({level, duration, title, desc, image, scrollToSection}){
 
     return(
         <div className="hero classes">
@@ -14,7 +14,7 @@ function PageHeader({level, duration, title, desc, image}){
             </div>
             <div className="scrollToSignUp">
                 <img src="../icons/curve-arrow.png" className="curve-arrow" alt="curve-arrow"/>
-                <button>
+                <button onClick={() => scrollToSection("classReg")}>
                     Sign Up
                 </button>
             </div>

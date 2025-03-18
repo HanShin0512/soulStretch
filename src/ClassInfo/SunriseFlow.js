@@ -6,8 +6,12 @@ import Prices from "./Prices/Prices";
 import Teachers from "./Teachers/Teachers";
 import Faq from "./Faq/Faq";
 import ClassSignup from "./ClassSignup/ClassSignup";
+import Footer from "../Footer/Footer";
+import { useState } from "react";
 
 function SunriseFlow(){
+    const [scrollToSection, setScrollToSection] = useState(null);
+
     const scheduleData = {
         "Monday": [{ time: "7:00AM", platform: "Online", teacher: "Eve", price: "$10"}],
         "Wednesday": [{ time: "7:00AM", platform: "Online", teacher: "Eve", price: "$10"}],
@@ -18,13 +22,14 @@ function SunriseFlow(){
       
     return(
         <div>
-            <Navbar/>
+            <Navbar setScrollToSection={setScrollToSection}></Navbar>
             <PageHeader
                 level="Beginner to Intermediate"
                 duration="45 minuutes"
                 title="Sunrise Flow"
                 desc="Gentle yet energizing sequence that focuses on awakening the body and calming the mind. This class incorporates sun salutations, light stretching, and breathwork to set a positive tone for the day."
-                image="https://images.pexels.com/photos/8436595/pexels-photo-8436595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+                image="https://images.pexels.com/photos/8436595/pexels-photo-8436595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                scrollToSection={scrollToSection}>
             </PageHeader>
             <RulesFlower></RulesFlower>
             <Prices scheduleData={scheduleData}></Prices>
@@ -38,6 +43,7 @@ function SunriseFlow(){
             ></Teachers>
             <Faq></Faq>
             <ClassSignup scheduleData={scheduleData}></ClassSignup>
+            <Footer></Footer>
         </div>
     );
 }

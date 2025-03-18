@@ -14,11 +14,8 @@ function Faq(){
 
         const ansEl = document.getElementById(ans);
         if(ansEl){
-            const ansDisplay = ansEl.style.display === 'block' ? 'none' : 'block';
-            const ansTrans = ansEl.style.transform === 'translateY(0px)' ? 'translateY(-150%)' : 'translateY(0px)';
-            ansEl.style.transition = 'transform 0.3s ease';
-            ansEl.style.transform = ansTrans;
-            ansEl.style.display = ansDisplay;
+            const ansHeight = ansEl.style.maxHeight === ansEl.scrollHeight + 'px' ? '0px' : ansEl.scrollHeight + 'px';
+            ansEl.style.maxHeight = ansHeight;
         } else {
             console.log('Could not find tag' + ansEl);
         }
@@ -38,7 +35,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow1', 'ans1')}>  
                         </img>
                     </div>
-                    <p id="ans1"> Yes! We provide yoga mats and towels for all classes, but you're more than welcome to bring your own if you prefer. </p>
+                    <div id="ans1">
+                        <p> Yes! We provide yoga mats and towels for all classes, but you're more than welcome to bring your own if you prefer. </p>
+                    </div>
                 </div>
                 <div className="qContainer">
                     <div className="question">
@@ -50,7 +49,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow2', 'ans2')}>  
                         </img>
                     </div>
-                    <p id="ans2"> Absolutely! Our Sunrise Flow class is perfect for beginners, and our instructors always offer modifications for every level. </p>
+                    <div id="ans2">
+                        <p> Absolutely! Our Sunrise Flow class is perfect for beginners, and our instructors always offer modifications for every level. </p>
+                    </div>
                 </div>
                 <div className="qContainer">
                     <div className="question">
@@ -62,7 +63,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow3', 'ans3')}>  
                         </img>
                     </div>
-                    <p id="ans3"> Online classes are conducted via live video sessions, while offline classes are held at our studio. Both platforms offer the same high-quality experience. </p>
+                    <div id="ans3">
+                        <p> Online classes are conducted via live video sessions, while offline classes are held at our studio. Both platforms offer the same high-quality experience. </p>
+                    </div>
                 </div>
                 <div className="qContainer">
                     <div className="question">
@@ -74,7 +77,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow4', 'ans4')}>  
                         </img>
                     </div>
-                    <p id="ans4"> You’ll receive a confirmation email once you’ve signed up. If you don’t see it, check your spam folder or contact us. </p>
+                    <div id="ans4">
+                        <p> You’ll receive a confirmation email once you’ve signed up. If you don’t see it, check your spam folder or contact us. </p>
+                    </div>
                 </div>
                 <div className="qContainer">
                     <div className="question">
@@ -86,7 +91,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow5', 'ans5')}>  
                         </img>
                     </div>
-                    <p id="ans5"> Yes, you can cancel or reschedule up to 24 hours before the class starts through your profile page. </p>
+                    <div id="ans5">
+                        <p> Yes, you can cancel or reschedule up to 24 hours before the class starts through your profile page. </p>
+                    </div>
                 </div>
                 <div className="qContainer">
                     <div className="question">
@@ -98,7 +105,9 @@ function Faq(){
                             onClick={() => showAnswer('arrow6', 'ans6')}>  
                         </img>
                     </div>
-                    <p id="ans6"> We recommend arriving 10 minutes early, but if you're late, please join quietly to avoid disrupting others. </p>
+                    <div id="ans6">
+                        <p> We recommend arriving 10 minutes early, but if you're late, please join quietly to avoid disrupting others. </p>
+                    </div>
                 </div>
             </div>
         </div>

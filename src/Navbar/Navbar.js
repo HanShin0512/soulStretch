@@ -3,34 +3,34 @@ import { useState, useEffect, useRef } from "react";
 import './NavStyle.css';
 import Lenis from '@studio-freight/lenis';
 
-function Navbar({setIsHovered}){
+function Navbar({setScrollToSection}){
 
     const [bgColor, setBgColor] = useState('transparent'); 
     const [textColor, setTextColor] = useState('#FFFFFF');
     const lenis = useRef(null);
 
     //lenis
-      useEffect(() => {
-        //initialise lenis
-        lenis.current = new Lenis({
-          duration: 1.5,
-          easing: (t) => 1 - Math.pow(1 - t, 2), //cubic easing for smooth stop
-          smooth: true,
-          smoothTouch: true, //for touch screens
-        });
-    
-        const animate = (time) => {
-          lenis.current.raf(time);
-          requestAnimationFrame(animate);
-        };
-    
+    useEffect(() => {
+    //initialise lenis
+    lenis.current = new Lenis({
+        duration: 1.5,
+        easing: (t) => 1 - Math.pow(1 - t, 2), //cubic easing for smooth stop
+        smooth: true,
+        smoothTouch: true, //for touch screens
+    });
+
+    const animate = (time) => {
+        lenis.current.raf(time);
         requestAnimationFrame(animate);
-    
-        // Cleanup on unmount
-        return () => {
-          lenis.current.destroy();
-        };
-      }, []);
+    };
+
+    requestAnimationFrame(animate);
+
+    // Cleanup on unmount
+    return () => {
+        lenis.current.destroy();
+    };
+    }, []);
 
     //change navbar color
     useEffect(() => {
@@ -62,6 +62,12 @@ function Navbar({setIsHovered}){
         }
     }
 
+    useEffect(() => {
+        if(setScrollToSection){
+            setScrollToSection(() => scrollToSection);
+        }
+    }, [setScrollToSection]);
+
     // Handle sidebar toggle
     const [sidebarShown, setSideBarShown] = useState(false);
     const toggleSidebar = () => setSideBarShown((prev) => !prev); // Toggle sidebar state
@@ -81,9 +87,7 @@ function Navbar({setIsHovered}){
     return(
 
         <nav 
-            style={{ backgroundColor: bgColor }} 
-            onMouseEnter={() => setIsHovered?.(false)} 
-            onMouseLeave={() => setIsHovered?.(true)}>
+            style={{ backgroundColor: bgColor }} >
             <a className='logo logo-nav' style={{ color: textColor }} href='#hero' onClick={() => scrollToSection('hero')}>Soul Stretch </a>
             <div className='links'>
                 <a href='#about' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('about')}> About </a>

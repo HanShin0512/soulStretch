@@ -24,16 +24,33 @@
     gap: .5rem;
 }
 .petal{
+    color: white;
     width: 270px;
     height: 260px;
-    background-color: var(--secondaryColor);
+    background-color: var(--mainGreen);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+.petal:hover{
+    background-color: var(--greenHover);
+}
+.tl.petal:hover {
+    transform: translateY(-15px) translateX(-15px);
+}
+.tr.petal:hover {
+    transform: translateY(-15px) translateX(15px);
+}
+.bl.petal:hover {
+    transform: translateY(15px) translateX(-15px);
+}
+.br.petal:hover {
+    transform: translateY(15px) translateX(15px);
 }
 .petal p{
     padding: 1.5rem;
-
 }
 .tl{
     border-radius: 0px 186px 0px 109px;
