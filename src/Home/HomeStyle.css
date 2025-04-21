@@ -29,16 +29,9 @@
         pointer-events: none;
     }
 }
-@media (max-width: 480px){
-    .hero-img{
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-}
   
 /* custom cursor */
-.hero.home{
+#hero{
     cursor: url('http://localhost:3000/icons/play-video.png')40 40, auto;
 }
   
@@ -140,9 +133,8 @@
     height: 150vh; 
 }
 .pinned-text {
-    max-width: 600px;
-    width: 600px;
-    font-size: 4.4vw;
+    width: 483px;
+    font-size: 4.1vw;
     text-align: center;
 }
 .pinned-text h1{

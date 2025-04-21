@@ -22,6 +22,7 @@ nav{
 .links{
     display: flex;
     gap: 5vw;
+    align-items: center;
     text-transform: uppercase;
 }
 nav a{
@@ -30,6 +31,33 @@ nav a{
     text-decoration: none;
     position: relative;
     transition: color 0.6s ease;
+}
+
+.signin, .signup{
+    padding: .4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    font-size: 1.133vw;
+    transition: background-color 0.3s ease-in;
+    text-transform: uppercase;
+}
+.signup{
+    color: white;
+    border: none;
+    background-color: var(--signup-bg);
+}
+.signup:hover{
+    background-color: var(--greenHover);
+}
+.signin{
+    background-color: var(--signin-bg);
+    color: var(--text-color);
+    border: none;
+}
+.signin:hover{
+    background-color: #81af887f;
 }
 .logo-nav:hover{
     cursor: pointer;

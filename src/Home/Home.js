@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from "gsap/Draggable";
+import { useNavigate  } from 'react-router-dom';
 import './HomeStyle.css';
 import Navbar from '../Navbar/Navbar';
 import Article from '../Article/Article';
@@ -14,9 +15,12 @@ function Home() {
   //references and states
   const containerRef = useRef(null); //drag reviews
   const progressBarRef = useRef(null); // Reference to the progress bar
+  const navigate = useNavigate();
 
   useEffect(() => {
-
+    // Refresh ScrollTrigger on load
+    ScrollTrigger.refresh();
+    
     const pinnedText = document.querySelector('.pinned-text');
 
     ScrollTrigger.matchMedia({
@@ -29,6 +33,7 @@ function Home() {
             end: "bottom bottom",
             pin: true,
             scrub: 1,
+            pinSpacing: false,
           },
         });
       }
@@ -135,7 +140,6 @@ function Home() {
       : "url('http://localhost:3000/icons/stop-video.png') 64 64, auto";
   }
   
-
   return (
     <div className="homeContainer" >
       
@@ -225,35 +229,35 @@ function Home() {
 
           <div className='class firstClass'>
             <div className='classImageContainer'>
-              <img src='/classes/firstClass.jpg' alt='yoga class' onClick={() => {window.open("/ClassInfo/SunriseFlow", '_blank');}}></img>
+              <img src='/classes/firstClass.jpg' alt='yoga class' onClick={() => navigate("/ClassInfo/SunriseFlow", { replace: true }) || window.scrollTo(0, 0)}></img>
             </div>
             <h1 className='name'>Sunrise Flow</h1>
             <p className='classLvl'> <b>Level</b>: Beginner to Intermediate</p>
             <p className='classDesc'> Gentle yet energizing sequence that focuses on awakening the body and calming the mind. This class incorporates sun salutations, light stretching, and breathwork to set a positive tone for the day.</p>
             <p className='duration'> <b>Duration</b>: 45 minutes </p>
-            <button className='classSignup' onClick={() => {window.open("/ClassInfo/SunriseFlow", '_blank');}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {navigate("/ClassInfo/SunriseFlow"); window.scrollTo(0, 0);}}>Sign Up Now</button>
           </div>
 
           <div className='class secClass'>
             <div className='classImageContainer'>
-              <img src='/classes/secClass.jpg' alt='yoga class' onClick={() => {window.open("/ClassInfo/PowerPulse", '_blank');}}></img>
+              <img src='/classes/secClass.jpg' alt='yoga class' onClick={() => {navigate("/ClassInfo/PowerPulse"); window.scrollTo(0, 0);}}></img>
             </div>
             <h1 className='name'>Power Pulse Yoga</h1>
             <p className='classLvl'> <b>Level</b>: Intermediate to Advanced </p>
             <p className='classDesc'> Perfect for those who want to level up their yoga practice! A dynamic and strength-focused yoga session that combines traditional poses with modern power moves. Expect to sweat and challenge your limits.</p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
-            <button className='classSignup' onClick={() => {window.open("/ClassInfo/PowerPulse");}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {navigate("/ClassInfo/PowerPulse"); window.scrollTo(0, 0);}}>Sign Up Now</button>
           </div>
 
           <div className='class thirdClass'>
             <div className='classImageContainer'>
-              <img src='/classes/thirdClass.png' alt='yoga class' onClick={() => {window.open("/ClassInfo/YinYan", '_blank');}}></img>
+              <img src='/classes/thirdClass.png' alt='yoga class' onClick={() => {navigate("/ClassInfo/YinYan"); window.scrollTo(0, 0);}}></img>
             </div>
             <h1 className='name'>Yin & Yang</h1>
             <p className='classLvl'> <b>Level</b>: All Levels</p>
             <p className='classDesc'> An intimate class designed for partners to sweat together and connect through breath and movement. You’ll work together to support each other in poses that foster trust and communication. </p>
             <p className='duration'> <b>Duration</b>: 60 minutes </p>
-            <button className='classSignup' onClick={() => {window.open("/ClassInfo/YinYan", '_blank');}}>Sign Up Now</button>
+            <button className='classSignup' onClick={() => {navigate("/ClassInfo/YinYan"); window.scrollTo(0, 0);}}>Sign Up Now</button>
           </div>
 
         </div>  
@@ -426,7 +430,7 @@ function Home() {
           {/* line */}
           <div className='line'></div>
 
-       </div>
+      </div>
       </section>
 
       {/* footer */}
