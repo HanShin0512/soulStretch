@@ -21,14 +21,28 @@ function AuthForm() {
 
   useEffect(() => {
     if (doorRef.current) {
-      // door slide animation
-      gsap.to(doorRef.current, {
+      const tl = gsap.timeline();
+  
+      // Step 1: Expand to full
+      tl.to(doorRef.current, {
+        width: '100%',
+        x: '0%',
+        duration: 0.4,
+        ease: 'power1.inOut',
+      });
+  
+      // Step 2: Slide + Shrink to 50%
+      tl.to(doorRef.current, {
+        width: '50%',
         x: isSignIn ? '100%' : '0%',
         duration: 0.9,
         ease: 'power1.inOut',
       });
     }
   }, [isSignIn]);
+  
+  
+  
 
   return (
     <div className="authContainer">
@@ -107,11 +121,12 @@ function AuthForm() {
             </div>
 
           </form>
-
-          </div>
-          <img className='door' ref={doorRef} src='/door.png'></img>
         </div>
+        {/* <img className='door' ref={doorRef} src='/door.png' alt='slide door to cover up each side of sign in sign up and slide through them accordingly'></img> */}
+        
+        <div ref={doorRef} className="curtain" />
       </div>
+    </div>
 
   );
 };

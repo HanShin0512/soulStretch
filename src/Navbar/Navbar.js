@@ -70,7 +70,7 @@ function Navbar(){
             <div className='links'>
                 <a href='#classes' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('classes')}> Classes </a>
                 <a href='#articles' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('articles')}> Articles </a>
-                <a href='#contact' style={{ color: textColor }} className='hideOnMobile' onClick={() => scrollToSection('contact')}> Contact </a>
+                <a style={{ color: textColor }} className='hideOnMobile' onClick={() => navigate('/Contact/Contact')}> Contact </a>
                 <button 
                     className="signin" 
                     style={{ "--signup-bg": signupBg, color: textColor }}
@@ -86,7 +86,7 @@ function Navbar(){
                 <a href='#classes' onClick={() => scrollToSection('testimonials')}> Classes </a>
                 <a href='#testimonials' onClick={() => scrollToSection('testimonials')}> Testimonials </a>
                 <a href='#articles' onClick={() => scrollToSection('articles')}> Articles </a>
-                <a href='#contact' onClick={() => scrollToSection('contact')}> Contact </a>
+                <a href='#contact' onClick={() => navigate('/Contact/Contact')}> </a>
             </div>
         </nav>
 

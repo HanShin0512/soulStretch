@@ -3,7 +3,7 @@ import './FooterStyle.css';
 
 function Footer(){
     return(
-        <footer id='contact'>
+        <footer id='footer'>
 
             {/* logo and title */}
             <div className='top'>

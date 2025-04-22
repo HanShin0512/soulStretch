@@ -148,3 +148,19 @@
 .toggleBtn:hover{
   text-decoration: underline;
 }
+.curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to right,
+    #81AF88,
+    #81AF88 35px,
+    #739d7b 45px
+  );
+  box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.2);
+}

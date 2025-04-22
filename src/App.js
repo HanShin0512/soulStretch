@@ -13,6 +13,7 @@ import ClassSignup from "./ClassInfo/ClassSignup/ClassSignup";
 import Article from "./Article/Article";
 import Footer from "./Footer/Footer";
 import AuthForm from "./SignInUp/AuthForm";
+import Contact from "./Contact/Contact";
 import { ScrollProvider } from "./ScrollContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Footer/Footer" element={<Footer/>}></Route>
             <Route path="/SignInUp/AuthForm" element={<AuthForm/>}></Route>
             <Route path="/ScrollContext" element={<ScrollProvider/>}></Route>
+            <Route path="/Contact/Contact" element={<Contact/>}></Route>
           </Routes>
         </ScrollProvider>
       </GoogleOAuthProvider>
